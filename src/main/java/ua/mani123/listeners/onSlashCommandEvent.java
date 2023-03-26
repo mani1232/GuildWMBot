@@ -15,7 +15,7 @@ public class onSlashCommandEvent extends ListenerAdapter {
         WMUser wmUser = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
         if (wmUser == null) {
             EventUtils.sendRegisterModal(event);
-        } else if (wmUser.isPrivateUser()) {
+        } else if (wmUser.isBanned()) {
             event.replyEmbeds(wmUser.getLang().getStrings().embed_banned.build()).setEphemeral(true).queue();
         } else {
             if (Main.wmCommands.containsKey(event.getName())) {

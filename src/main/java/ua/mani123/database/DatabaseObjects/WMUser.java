@@ -18,6 +18,7 @@ public class WMUser {
     private Lang lang = Lang.EN;
     private boolean inGuild = false;
     private boolean privateUser = false;
+    private boolean banned = false;
     private String displayName;
     private Long gameBalance = 0L;
     private Long experience = 0L;
@@ -37,6 +38,7 @@ public class WMUser {
         document.append("gameBalance", this.gameBalance);
         document.append("privateUser", this.privateUser);
         document.append("savedRoles", this.savedRoles);
+        document.append("banned", this.banned);
         return document;
     }
 

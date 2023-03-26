@@ -15,6 +15,9 @@ public class onModalInteractionEvent extends ListenerAdapter {
         if (EventUtils.isBotOffline(event)) return;
 
         WMUser wmUser = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
+        if (wmUser != null && wmUser.isBanned()) {
+            event.replyEmbeds(wmUser.getLang().getStrings().embed_banned.build()).setEphemeral(true).queue();
+        }
         switch (event.getModalId()) {
             case "register_account" -> {
                 if (wmUser == null) {
@@ -22,7 +25,7 @@ public class onModalInteractionEvent extends ListenerAdapter {
                     wmUser.setDiscordId(event.getUser().getIdLong());
                     String realName = event.getValue("display_name").getAsString();
                     if (!realName.equals("")) {
-                       wmUser.setDisplayName(realName);
+                        wmUser.setDisplayName(realName);
                     }
                     switch (event.getUserLocale()) {
                         case RUSSIAN -> {
@@ -43,14 +46,11 @@ public class onModalInteractionEvent extends ListenerAdapter {
                             New account registered:
                             user id: %s
                             user tag: %s
-                            user uuid: %s
+                            user database id: %s
                             """, wmUser.getDiscordId(), event.getUser().getAsTag(), wmUser.getId()
                     ));
                     event.replyEmbeds(wmUser.getLang().getStrings().embed_default_success_title.build()).setEphemeral(true).queue();
                 }
-               // else if (wmUser.isBanned()) {
-               //     event.replyEmbeds(wmUser.getLang().getStrings().embed_banned.build()).setEphemeral(true).queue();
-               // }
             }
             default -> {
                 if (event.getModalId().startsWith("buy_info")) {
