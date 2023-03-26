@@ -21,17 +21,12 @@ public class LanguageCommand extends WMCommand {
 
     public LanguageCommand(String name) {
         this.name = name;
-        this.slashCommandData = Commands.slash("language", "Sends a menu to change the account language")
+        this.slashCommandData = Commands.slash(this.name, "Sends a menu to change the account language")
                 .setDescriptionLocalizations(Map.of(
                         DiscordLocale.ENGLISH_US, "Sends a menu to change the account language",
                         DiscordLocale.ENGLISH_UK, "Sends a menu to change the account language",
                         DiscordLocale.UKRAINIAN, "Відправляє меню для зміни мови облікового запису",
-                        DiscordLocale.RUSSIAN, "Отправляет меню для изменения языка аккаунта"))
-                .setNameLocalizations(Map.of(
-                        DiscordLocale.ENGLISH_US, "language",
-                        DiscordLocale.ENGLISH_UK, "language",
-                        DiscordLocale.UKRAINIAN, "language",
-                        DiscordLocale.RUSSIAN, "language"));
+                        DiscordLocale.RUSSIAN, "Отправляет меню для изменения языка аккаунта"));
     }
 
     @Override

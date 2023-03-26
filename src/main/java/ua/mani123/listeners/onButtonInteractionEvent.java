@@ -16,7 +16,7 @@ import ua.mani123.database.DatabaseObjects.WMUser;
 public class onButtonInteractionEvent extends ListenerAdapter {
     @Override
     public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
-        if (EventUtils.botOnline(event)) return;
+        if (EventUtils.isBotOffline(event)) return;
 
         WMUser wmUser = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
         if (wmUser == null) {

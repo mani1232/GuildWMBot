@@ -10,7 +10,7 @@ public class onSlashCommandEvent extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        if (EventUtils.botOnline(event)) return;
+        if (EventUtils.isBotOffline(event)) return;
 
         WMUser wmUser = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
         if (wmUser == null) {

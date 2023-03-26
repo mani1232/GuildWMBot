@@ -10,7 +10,7 @@ public class onEntitySelectInteractionEvent extends ListenerAdapter {
 
     @Override
     public void onEntitySelectInteraction(@NotNull EntitySelectInteractionEvent event) {
-        if (EventUtils.botOnline(event)) return;
+        if (EventUtils.isBotOffline(event)) return;
 
         WMUser account = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
         if (account == null) {

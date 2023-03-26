@@ -12,7 +12,7 @@ public class onModalInteractionEvent extends ListenerAdapter {
 
     @Override
     public void onModalInteraction(@NotNull ModalInteractionEvent event) {
-        if (EventUtils.botOnline(event)) return;
+        if (EventUtils.isBotOffline(event)) return;
 
         WMUser wmUser = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
         switch (event.getModalId()) {

@@ -16,7 +16,7 @@ public class onStringSelectEvent extends ListenerAdapter {
 
     @Override
     public void onStringSelectInteraction(@NotNull StringSelectInteractionEvent event) {
-        if (EventUtils.botOnline(event)) return;
+        if (EventUtils.isBotOffline(event)) return;
 
         WMUser account = Main.dataBase.getUserByDiscordId(event.getUser().getIdLong());
         if (account == null) {

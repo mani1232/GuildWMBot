@@ -56,7 +56,7 @@ public class EventUtils {
     }
 
 
-    public static boolean botOnline(IReplyCallback event) {
+    public static boolean isBotOffline(IReplyCallback event) {
         if (event.getJDA().getPresence().getStatus() == OnlineStatus.DO_NOT_DISTURB) {
             switch (event.getUserLocale()) {
                 case UKRAINIAN ->
@@ -66,9 +66,9 @@ public class EventUtils {
                 default ->
                         event.replyEmbeds(new EmbedBuilder().setDescription("This bot is currently disabled, please try again when the bot status is `online` or `idle`").build()).setEphemeral(true).queue();
             }
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
 
