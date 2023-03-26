@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.mani123.command.WMCommand;
@@ -33,7 +34,7 @@ public class Main {
 
     public static void main(String[] args) {
         dataBase = new Database("localhost", "27017", "worldmandia_test");
-        jda = DefaultShardManagerBuilder.createDefault(PrivateData.discordBotToken).enableIntents(GatewayIntent.MESSAGE_CONTENT).addEventListeners(
+        jda = DefaultShardManagerBuilder.createDefault(PrivateData.discordBotToken).setMemberCachePolicy(MemberCachePolicy.PENDING).enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS).addEventListeners(
                 new onGuildEvents(),
                 new onSlashCommandEvent(),
                 new onButtonInteractionEvent(),

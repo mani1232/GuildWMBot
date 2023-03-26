@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import ua.mani123.Main;
 
 import java.awt.*;
 
@@ -35,12 +36,19 @@ public class onGuildEvents extends ListenerAdapter {
 
     @Override
     public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent event) {
-        event.getUser().openPrivateChannel().flatMap(privateChannel -> privateChannel.sendMessageEmbeds(new EmbedBuilder().setColor(Color.RED).setDescription(String.format("""
-                                
-                %s To use this bot you need to use any command of this bot, for example `/account`
-                %s Для того що б користуватися ботом вам потрібно використовувати будь-яку команду цього бота, наприклад `/account`
-                %s Для того что бы пользоватся ботом вам нужно использовать любую команду этого бота, к примеру `/account`
-                                
-                """, Emoji.fromFormatted("\uD83C\uDDEC\uD83C\uDDE7"), Emoji.fromFormatted("\uD83C\uDDFA\uD83C\uDDE6"), Emoji.fromFormatted("\uD83C\uDDF7\uD83C\uDDFA"))).setTitle("Welcome to WorldMandia discord server").build())).queue();
+        Main.logger.info("User joined to guild: " + event.getUser().getAsTag());
+        event.getUser().openPrivateChannel().queue(privateChannel -> privateChannel.sendMessageEmbeds(new EmbedBuilder().setColor(Color.RED).setDescription(String.format("""
+                \s
+                ```Markdown
+                %s
+                > To use this bot you need to use any command of this bot, for example `/account`
+                %s
+                > Для того що б користуватися ботом вам потрібно використовувати будь-яку команду цього бота, наприклад `/account`
+                %s
+                > Для того что бы пользоватся ботом вам нужно использовать любую команду этого бота, к примеру `/account`
+                ```
+                """, Emoji.fromFormatted("\uD83C\uDDEC\uD83C\uDDE7"), Emoji.fromFormatted("\uD83C\uDDFA\uD83C\uDDE6"), Emoji.fromFormatted("\uD83C\uDDF7\uD83C\uDDFA"))).setTitle("Welcome to WorldMandia discord server").build()).queue());
     }
+
+
 }
