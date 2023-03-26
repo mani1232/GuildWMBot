@@ -1,4 +1,4 @@
-package ua.mani123.Handlers;
+package ua.mani123.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;

@@ -34,7 +34,7 @@ public class Main {
     public static void main(String[] args) {
         dataBase = new Database("localhost", "27017", "worldmandia_test");
         jda = DefaultShardManagerBuilder.createDefault(PrivateData.discordBotToken).enableIntents(GatewayIntent.MESSAGE_CONTENT).addEventListeners(
-                new onGuildReadyEvent(),
+                new onGuildEvents(),
                 new onSlashCommandEvent(),
                 new onButtonInteractionEvent(),
                 new onModalInteractionEvent(),
