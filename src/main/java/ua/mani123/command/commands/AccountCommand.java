@@ -7,7 +7,6 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.interactions.DiscordLocale;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import ua.mani123.Constants;
 import ua.mani123.Main;
@@ -22,9 +21,6 @@ import java.util.concurrent.TimeUnit;
 
 @Getter
 public class AccountCommand extends WMCommand {
-
-    String name;
-    SlashCommandData slashCommandData;
 
     public AccountCommand(String name) {
         this.name = name;

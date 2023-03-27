@@ -5,7 +5,6 @@ import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.DiscordLocale;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 import net.dv8tion.jda.api.interactions.components.selections.SelectOption;
 import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import ua.mani123.command.WMCommand;
@@ -15,9 +14,6 @@ import java.util.Map;
 
 @Getter
 public class LanguageCommand extends WMCommand {
-
-    String name;
-    SlashCommandData slashCommandData;
 
     public LanguageCommand(String name) {
         this.name = name;

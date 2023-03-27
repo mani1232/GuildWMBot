@@ -22,6 +22,8 @@ public class WMUser {
     private String displayName;
     private Long gameBalance = 0L;
     private Long experience = 0L;
+    private List<ObjectId> categoriesOwner = new ArrayList<>();
+    private int maxCategories = 1;
     private List<Long> savedRoles = new ArrayList<>();
 
     public WMUser() {}
@@ -38,6 +40,8 @@ public class WMUser {
         document.append("gameBalance", this.gameBalance);
         document.append("privateUser", this.privateUser);
         document.append("savedRoles", this.savedRoles);
+        document.append("categoriesOwner", this.categoriesOwner);
+        document.append("maxCategories", this.maxCategories);
         document.append("banned", this.banned);
         return document;
     }

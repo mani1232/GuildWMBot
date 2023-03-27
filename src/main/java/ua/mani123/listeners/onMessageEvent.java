@@ -30,7 +30,7 @@ public class onMessageEvent extends ListenerAdapter {
             } else if (wmUser.isBanned()) {
                 return;
             }
-            TextChannel textChannel = Main.main_guild.getTextChannelById(981855702886785054L);
+            TextChannel textChannel = Main.main_guild.getTextChannelById(1089658022768418926L);
             if (event.isFromType(ChannelType.PRIVATE)) {
                 Optional<ThreadChannel> threadChannel = Objects.requireNonNull(textChannel).getThreadChannels().stream().filter(threadChannelFilter -> threadChannelFilter.getName().equals(event.getAuthor().getAsTag() + "-" + event.getAuthor().getId())).findFirst();
                 if (threadChannel.isPresent()) {

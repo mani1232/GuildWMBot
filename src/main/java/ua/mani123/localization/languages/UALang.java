@@ -15,7 +15,7 @@ public class UALang extends DefaultLang {
         embed_description_account_info = """
                             
                 ```Markdown
-                Реальне ім'я:\s
+                Ім'я облікового запису:\s
                 > %s
                 Баланс:\s
                 > %s

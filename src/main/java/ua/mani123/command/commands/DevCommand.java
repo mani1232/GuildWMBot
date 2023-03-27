@@ -7,7 +7,6 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import ua.mani123.Main;
 import ua.mani123.command.WMCommand;
@@ -18,9 +17,6 @@ import java.util.Objects;
 
 @Getter
 public class DevCommand extends WMCommand {
-
-    String name;
-    SlashCommandData slashCommandData;
 
     public DevCommand(String name) {
         this.name = name;

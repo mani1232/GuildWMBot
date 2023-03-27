@@ -14,7 +14,7 @@ public class RULang extends DefaultLang {
         embed_description_account_info = """
                             
                 ```Markdown
-                Реальное имя:\s
+                Имя аккаунта:\s
                 > %s
                 Баланс:\s
                 > %s

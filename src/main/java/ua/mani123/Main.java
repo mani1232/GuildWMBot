@@ -17,6 +17,7 @@ import ua.mani123.database.Database;
 import ua.mani123.listeners.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -34,7 +35,7 @@ public class Main {
 
     public static void main(String[] args) {
         dataBase = new Database("localhost", "27017", "worldmandia_test");
-        jda = DefaultShardManagerBuilder.createDefault(PrivateData.discordBotToken).setMemberCachePolicy(MemberCachePolicy.ALL).enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.DIRECT_MESSAGES,  GatewayIntent.GUILD_MEMBERS).addEventListeners(
+        jda = DefaultShardManagerBuilder.createDefault(PrivateData.discordBotToken).setMemberCachePolicy(MemberCachePolicy.ALL).enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_MEMBERS).addEventListeners(
                 new onGuildEvents(),
                 new onSlashCommandEvent(),
                 new onButtonInteractionEvent(),
@@ -44,17 +45,27 @@ public class Main {
                 new onCommandAutoCompleteInteractionEvent(),
                 new onReadyEvent(),
                 new onEntitySelectInteractionEvent(),
+                new onVoiceChatJoin(),
                 new onStringSelectEvent()
         ).build();
-        wmCommands.putAll(Map.of(
-                "account", new AccountCommand("account"),
-                "balance", new BalanceCommand("balance"),
-                "lang", new LanguageCommand("lang"),
-                "shop", new ShopCommand("shop"),
-                "dev", new DevCommand("dev")
-                )
-        );
+        addCommand(List.of(
+                new AccountCommand("account"),
+                new BalanceCommand("balance"),
+                new LanguageCommand("lang"),
+                new ShopCommand("shop"),
+                new CategoryCommand("category"),
+                new RulesCommand("rules"),
+                new DevCommand("dev")
+        ));
+
         jda.setPresence(OnlineStatus.ONLINE, Activity.watching("test"));
         new Thread(new consoleUtils()).start();
     }
+
+    public static void addCommand(List<WMCommand> command) {
+        for (WMCommand wm : command) {
+            wmCommands.put(wm.getName(), wm);
+        }
+    }
+
 }

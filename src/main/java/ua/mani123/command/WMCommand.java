@@ -6,12 +6,16 @@ import ua.mani123.database.DatabaseObjects.WMUser;
 
 public abstract class WMCommand {
 
+    public String name;
+
+    public SlashCommandData slashCommandData;
+
     public String getName() {
-        return null;
+        return name;
     }
 
     public SlashCommandData getSlashCommandData() {
-        return null;
+        return slashCommandData;
     }
 
     public void execute(SlashCommandInteractionEvent event, WMUser wmUser) {}
